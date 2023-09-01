@@ -1,0 +1,18 @@
+{
+    "name": "verifiablyrandom/api",
+    "description": "Generate verifiablyrandom.app API Requests",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Verifiablyrandom\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "orunda.vip ltd"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
