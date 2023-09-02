@@ -1,6 +1,6 @@
 <?php
  
-namespace VerifiablyRandom\Api;
+namespace VerifiablyRandom\Api\Validate;
 
 /*
 
