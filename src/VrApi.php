@@ -15,17 +15,17 @@ class VrApi {
 	
 	public function __construct(){
 		$this->api_uri = "https://verifiablyrandom.app";
-		$this->client = new \GuzzleHttp\Client(['base_uri' => $this->api_uri]);
 		$this->request = new \stdClass();
 		$this->request->headers = ['User-Agent','verifiablyrandom.app/1.0.0','Accept'=>'application/json','Authorization'=>'Bearer ' . $this->api_key];
 		$this->request->query = [];
+		$this->refreshClient();
 	}
 	
 	public function request($query=array()){
 		$this->request->query = $query;
 		
 		if($this->checkRequest($this->request->query)){
-			$this->response = $this->client->request('GET', '/v1/api', ['headers' => $this->request->headers], http_build_query($this->request->query, null, '&'));
+			$this->response = $this->client->request('GET', '/v1/api', http_build_query($this->request->query, null, '&'));
 		} else {
 			throwerror();
 		}
@@ -55,11 +55,12 @@ class VrApi {
 	}
 	
 	public function refreshClient(){
-		$this->client = new \GuzzleHttp\Client(['base_uri' => $this->api_uri]);
+		$this->client = new \GuzzleHttp\Client(['base_uri' => $this->api_uri,  'headers' => $this->request->headers]);
 	}
 	
 	public function refreshRequestHeaderAuthorization(){
 		$this->request->headers['Authorization'] = 'Bearer ' . $this->api_key;
+		$this->refreshClient();
 	}
 	
 	public function checkRequest($Request){
