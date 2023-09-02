@@ -21,9 +21,6 @@
     },
 	"extra": {
     "laravel": {
-        "providers": [
-            "VerifiablyRandom\\Api\\VrApi"
-        ],
 		"aliases": {
 			"VrApi": "VerifiablyRandom\\Api\\Src\\VrApi::class"
 		}
