@@ -22,7 +22,7 @@
 	"extra": {
     "laravel": {
 		"aliases": {
-			"VrApi": "VerifiablyRandom\\Api\\Src\\VrApi::class"
+			"VrApi": "VerifiablyRandom\\Api\\VrApi::class"
 		}
     }
 }
