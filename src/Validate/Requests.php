@@ -19,6 +19,10 @@ class Requests
 		$this->validObjects = ['natural','even','odd','irrational','prime','binary', 'hexadecimal','decimal','byte','email','domain','ip'];
 	}
 	
+	public function isObExists($obName){
+		return array_key_exists($obName, $this->validObjects);
+	}
+	
 	public function ifOpExists($opName){
 		return array_key_exists($opName, $this->validOp);
 	}

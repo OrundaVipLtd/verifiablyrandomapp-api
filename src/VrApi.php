@@ -25,6 +25,7 @@ class VrApi {
 		$this->request->query = $query;
 		if($this->checkRequest($this->request->query['request'])){
 			$this->response = $this->client->request('POST', '/v1/api', ['json' => $this->request->query]);
+			
 		} else {
 			throwerror();
 		}
@@ -87,7 +88,7 @@ class VrApi {
 		if(array_key_exists('models')){
 			return runRequestValidation($array['model'], $depth+=1);
 		} else {
-			if(in_array($array['key'], $validObjects)){
+			if(Requests::ifObExists($array['key'])){
 				if(array_key_exists('options', $array)){
 					foreach($array['options'] as $key => $value){
 						if(!Requests::validate_option($key, $value)){
