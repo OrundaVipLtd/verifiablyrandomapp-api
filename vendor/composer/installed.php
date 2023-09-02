@@ -3,13 +3,31 @@
         'name' => 'verifiablyrandom/api',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f4398e0ca913fdb33cc0889e759b3d69b3de5cfb',
+        'reference' => '30f1a7172d1eebc110059a986d4726a974356ec6',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'guzzlehttp/guzzle' => array(
+            'pretty_version' => '7.8.x-dev',
+            'version' => '7.8.9999999.9999999-dev',
+            'reference' => '56a99b55453cfe877f13d75619aa2a14fa913b28',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'guzzlehttp/promises' => array(
+            'pretty_version' => '2.0.x-dev',
+            'version' => '2.0.9999999.9999999-dev',
+            'reference' => '71b12f952d8be69a239989db2fe08314a5189e3b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../guzzlehttp/promises',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'guzzlehttp/psr7' => array(
             'pretty_version' => '2.6.x-dev',
             'version' => '2.6.9999999.9999999-dev',
@@ -31,6 +49,23 @@
             'dev_requirement' => false,
         ),
         'psr/event-dispatcher-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0',
+            ),
+        ),
+        'psr/http-client' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '0955afe48220520692d2d09f7ab7e0f93ffd6a31',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/http-client',
+            'aliases' => array(
+                0 => '1.0.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
@@ -208,7 +243,7 @@
         'verifiablyrandom/api' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f4398e0ca913fdb33cc0889e759b3d69b3de5cfb',
+            'reference' => '30f1a7172d1eebc110059a986d4726a974356ec6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
