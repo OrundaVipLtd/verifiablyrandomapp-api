@@ -109,8 +109,8 @@ class VrApi {
 		} else {
 			print_r("Requests::ifObExists");
 			if($Requests->ifObExists($array['key'])){
-				if(array_key_exists('options', $array)){
-					foreach($array['options'] as $key => $value){
+				if(array_key_exists('data', $array)){
+					foreach($array['data'] as $key => $value){
 						if(!$Requests->validate_option($key, $value)){
 							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$key.'=>'.$value.']');
 							return -5;
