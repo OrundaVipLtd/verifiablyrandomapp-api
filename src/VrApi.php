@@ -21,7 +21,7 @@ class VrApi {
 		$this->refreshClient();
 	}
 	
-	public function request($query=array()){
+	public function model($query=array()){
 		$this->request->query = $query;
 		
 		if($this->checkRequest($this->request->query['request'])){
