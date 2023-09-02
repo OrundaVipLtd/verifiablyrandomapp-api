@@ -23,13 +23,11 @@ class VrApi {
 	
 	public function model($query=array()){
 		$this->request->query = $query;
-		/*
-		if($this->checkRequest($this->request->query['request'])){
+		if(true){
 			$this->response = $this->client->request('GET', '/v1/api', $this->request->query)->json();
 		} else {
 			throwerror();
 		}
-		*/
 	}
 	
 	
@@ -106,6 +104,12 @@ class VrApi {
 		} else {
 			return -2;
 		}
+	}
+	
+	private function throwerror($error=false){
+		if(!$error){$error="A non-std error occured.";}
+		print_r($error);
+		die();
 	}
 }
 
