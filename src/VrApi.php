@@ -2,6 +2,7 @@
 namespace VerifiablyRandom\Api;
 
 use VerifiablyRandom\Api\Validate\Requests;
+use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 
 class VrApi {
