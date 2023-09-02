@@ -23,8 +23,8 @@ class VrApi {
 	
 	public function model($query=array()){
 		$this->request->query = $query;
-		if(true){
-			$this->response = $this->client->request('GET', '/v1/api', $this->request->query)->json();
+		if($this->checkRequest($this->request->query['request'])){
+			$this->response = $this->client->request('GET', '/v1/api');
 		} else {
 			throwerror();
 		}
