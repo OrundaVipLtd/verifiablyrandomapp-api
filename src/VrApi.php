@@ -22,9 +22,10 @@ class VrApi {
 	}
 	
 	public function request($query=array()){
-		$this->request->query = json_encode($query);
+		$this->request->query = $query;
 		
 		if($this->checkRequest($this->request->query)){
+			$this->request->query = json_encode($this->request->query);
 			$this->response = $this->client->request('GET', '/v1/api', array('request'=>http_build_query($this->request->query)))->json();
 		} else {
 			throwerror();
