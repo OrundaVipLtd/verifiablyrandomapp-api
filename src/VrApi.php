@@ -25,7 +25,7 @@ class VrApi {
 		$this->request->query = $query;
 		
 		if($this->checkRequest($this->request->query)){
-			$this->request->model = new Request('POST', '/v1/api', ['headers' => $this->request->headers], http_build_query($this->request->query, null, '&'));
+			$this->request->model = new Request('GET', '/v1/api', ['headers' => $this->request->headers], http_build_query($this->request->query, null, '&'));
 			$this->response = $this->client->send($this->request->model, ['timeout' => 2]);
 		} else {
 			throwerror();
