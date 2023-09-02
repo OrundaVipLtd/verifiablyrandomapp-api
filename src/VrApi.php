@@ -70,9 +70,12 @@ class VrApi {
 		if(gettype($Request)=='array'){
 			$RequestSize = count($Request);
 			
-			$valid_request_error = $this->runRequestValidation($Request, 10);
-			if($valid_request_error<0){
-				$valid=false;
+			foreach($Request as $model_item){
+				$valid_request_error = $this->runRequestValidation($mode_item, 10);
+				if($valid_request_error<0){
+					$valid=false;
+					break;
+				}
 			}
 		} else {
 			$valid=false;
@@ -89,7 +92,15 @@ class VrApi {
 		if(array_key_exists('key', $array)){
 			print_r("array_key_exists('key', \'\$array\'\)");
 		if(array_key_exists('models')){
-			return runRequestValidation($array['model'], $depth+=1);
+			$valid = true;
+			foreach($array['model'] as $model_item){
+				$valid_request_error = runRequestValidation($model_item, $depth+=1);
+				if($valid_request_error<0){
+					$valid=false;
+					break;
+				}
+			}
+			return $valid;
 		} else {
 			print_r("Requests::ifObExists");
 			if(Requests::ifObExists($array['key'])){
