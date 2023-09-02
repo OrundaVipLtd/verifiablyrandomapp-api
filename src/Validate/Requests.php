@@ -14,9 +14,15 @@ class Requests
 {	
 	private $validObjects;
 	private $validOp;
+	private $valid_data;
 	
 	public function __construct(){
 		$this->validObjects = ['natural','even','odd','irrational','prime','binary', 'hexadecimal','decimal','byte','email','domain','ip'];
+		
+		$this->valid_data = new \stdClass();
+		$this->ip = new \stdClass();
+		$this->ip->version_string_types = array('any','v4','v6');
+		$this->ip->model_string_types = array('any','range','customer');
 	}
 	
 	public function ifObExists($obName){
@@ -541,6 +547,24 @@ class Requests
 							$valid=false;
 							break;
 						}
+					}
+				}
+				return $valid;
+			break;
+			case 'ip_version_string_type':
+				$valid = false;
+				if(gettype($options)=='string'){
+					if(in_array($options, $this->valid_data->ip->version_string_types)){
+						$valid=true;
+					}
+				}
+				return $valid;
+			break;
+			case 'ip_model_string_type':
+				$valid = false;
+				if(gettype($options)=='string'){
+					if(in_array($options, $this->valid_data->ip->model_string_types)){
+						$valid=true;
 					}
 				}
 				return $valid;
