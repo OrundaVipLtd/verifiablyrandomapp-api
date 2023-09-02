@@ -16,7 +16,7 @@ class VrApi {
 	public function __construct(){
 		$this->api_uri = "https://verifiablyrandom.app";
 		$this->request = new \stdClass();
-		$this->request->headers = ['User-Agent','verifiablyrandom.app/1.0.0','Accept'=>'application/json','Authorization'=>'Bearer ' . $this->api_key];
+		$this->request->headers = ['User-Agent','verifiablyrandom.app/1.0.0','Accept'=>'application/json','Content-Type'=>'application/json','Authorization'=>'Bearer ' . $this->api_key];
 		$this->request->query = [];
 		$this->refreshClient();
 	}
@@ -25,7 +25,7 @@ class VrApi {
 		$this->request->query = $query;
 		
 		if($this->checkRequest($this->request->query)){
-			$this->response = $this->client->request('GET', '/v1/api', array('request'=>http_build_query($this->request->query, null, '&')));
+			$this->response = $this->client->request('GET', '/v1/api', array('request'=>http_build_query($this->request->query, null, '&')))->json();
 		} else {
 			throwerror();
 		}
