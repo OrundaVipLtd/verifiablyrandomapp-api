@@ -12,6 +12,7 @@ class VrApi {
 	private $client;
 	private $request;
 	private $response;
+	private $error;
 	
 	public function __construct(){
 		$this->api_uri = "https://verifiablyrandom.app";
@@ -27,7 +28,7 @@ class VrApi {
 			$this->response = $this->client->request('POST', '/v1/api', ['json' => $this->request->query]);
 			
 		} else {
-			throwerror();
+			$this->throwerror();
 		}
 	}
 	
@@ -95,26 +96,31 @@ class VrApi {
 				if(array_key_exists('options', $array)){
 					foreach($array['options'] as $key => $value){
 						if(!Requests::validate_option($key, $value)){
+							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$key.'=>'.$value.']');
 							return -5;
 						} else {
 							return 0;
 						}
 					}
 				} else {
+					$this->error = array('code'=>-4, 'msg'=>'options key does not exists @'.$depth);
 					return -4;
 				}
 			} else {
+				$this->error = array('code'=>-3, 'msg'=>'Key ['.$array["key"].'] is invalid.');
 				return -3;
 			}
 		}
 		} else {
+			$this->error = array('code'=>-2, 'msg'=>'key [key] does not exist.');
 			return -2;
 		}
 	}
 	
-	private function throwerror($error=false){
-		if(!$error){$error="A non-std error occured.";}
-		print_r($error);
+	private function throwerror(){
+		if(!$this->error){$this->error=array('code'=>-99, 'msg'=>"A non-std error occured.");}
+		print_r($this->error['msg']);
+		print_r($this->error['code']);
 		die();
 	}
 }
