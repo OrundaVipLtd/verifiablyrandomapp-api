@@ -85,13 +85,11 @@ class VrApi {
 	}
 	
 	private function runRequestValidation(&$array, int $depth=0, int $max_depth=100){
-		print_r("runRequestValidation");
 		// Got 99 Problems but call stack smashing limits ain't 1 de cead.
 		if($depth > $max_depth || $depth >= 99){return -1;}
 		
 		$Requests = new Requests();
 		if(array_key_exists('key', $array)){
-			print_r("array_key_exists('key', \'\$array\'\)");
 		if(array_key_exists('models', $array)){
 			$valid = true;
 			if(gettype($array['model'])=='array'){
@@ -107,7 +105,6 @@ class VrApi {
 			}
 			return $valid;
 		} else {
-			print_r("Requests::ifObExists");
 			if($Requests->ifObExists($array['key'])){
 				if(array_key_exists('data', $array)){
 					foreach($array['data'] as $key => $value){
