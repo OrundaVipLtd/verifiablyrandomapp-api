@@ -33,6 +33,10 @@ class VrApi {
 	}
 	
 	
+	public function response(){
+		return $this->response;
+	}
+	
 	public function apiKey($key=false){
 		if($key){
 			$this->api_key = $key;
