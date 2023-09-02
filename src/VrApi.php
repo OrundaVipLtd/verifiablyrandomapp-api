@@ -25,7 +25,7 @@ class VrApi {
 		$this->request->query = $query;
 		
 		if($this->checkRequest($this->request->query)){
-			$this->response = $this->client->request('GET', '/v1/api', http_build_query($this->request->query, null, '&'));
+			$this->response = $this->client->request('GET', '/v1/api', array('request'=>http_build_query($this->request->query, null, '&')));
 		} else {
 			throwerror();
 		}
