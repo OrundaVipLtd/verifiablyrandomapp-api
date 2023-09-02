@@ -69,7 +69,8 @@ class VrApi {
 		if(gettype($Request)=='array'){
 			$RequestSize = count($Request);
 			
-			if(!$this->runRequestValidation($Request, 10)){
+			$valid_request_error = $this->runRequestValidation($Request, 10);
+			if($valid_request_error<0){
 				$valid=false;
 			}
 		} else {
@@ -94,7 +95,9 @@ class VrApi {
 				if(array_key_exists('options', $array)){
 					foreach($array['options'] as $key => $value){
 						if(!Requests::validate_option($key, $value)){
-							return false;
+							return -5;
+						} else {
+							return 0;
 						}
 					}
 				} else {
