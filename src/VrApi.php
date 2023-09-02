@@ -91,7 +91,7 @@ class VrApi {
 		
 		if(array_key_exists('key', $array)){
 			print_r("array_key_exists('key', \'\$array\'\)");
-		if(array_key_exists('models')){
+		if(array_key_exists('models', $array)){
 			$valid = true;
 			if(gettype($array['model'])=='array'){
 				foreach($array['model'] as $model_item){
