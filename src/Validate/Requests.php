@@ -20,7 +20,7 @@ class Requests
 	}
 	
 	public function ifObExists($obName){
-		return array_key_exists($obName, $this->validObjects);
+		return in_array($obName, $this->validObjects);
 	}
 	
 	public function ifOpExists($opName){
