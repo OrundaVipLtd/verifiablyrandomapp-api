@@ -20,9 +20,9 @@ class Requests
 		$this->validObjects = ['natural','even','odd','irrational','prime','binary', 'hexadecimal','decimal','byte','email','domain','ip'];
 		
 		$this->valid_data = new \stdClass();
-		$this->ip = new \stdClass();
-		$this->ip->version_string_types = array('any','v4','v6');
-		$this->ip->model_string_types = array('any','range','customer');
+		$this->valid_data->ip = new \stdClass();
+		$this->valid_data->ip->version_string_types = array('any','v4','v6');
+		$this->valid_data->ip->model_string_types = array('any','range','customer');
 	}
 	
 	public function ifObExists($obName){
