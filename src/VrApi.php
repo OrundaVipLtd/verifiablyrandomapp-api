@@ -42,6 +42,19 @@ class VrApi {
 		}
 	}
 	
+	public function apiUri($uri=false){
+		if($uri){
+			$this->api_uri = $uri;
+			$this->refreshClient();
+		} else {
+			return $this->api_uri;
+		}
+	}
+	
+	public function refreshClient(){
+		$this->client = new \GuzzleHttp\Client(['base_uri' => $this->api_uri]);
+	}
+	
 	public function refreshRequestHeaderAuthorization(){
 		$this->request->headers['Authorization'] = 'Bearer ' . $this->api_key;
 	}
