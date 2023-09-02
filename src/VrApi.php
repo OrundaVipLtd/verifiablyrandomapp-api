@@ -71,7 +71,7 @@ class VrApi {
 			$RequestSize = count($Request);
 			
 			foreach($Request as $model_item){
-				$valid_request_error = $this->runRequestValidation($mode_item, 10);
+				$valid_request_error = $this->runRequestValidation($model_item, 10);
 				if($valid_request_error<0){
 					$valid=false;
 					break;
