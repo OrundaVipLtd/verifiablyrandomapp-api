@@ -576,9 +576,9 @@ class Requests
 			if(property_exists($this->model->$type->super_models, $subtype)){
 				if(property_exists($this->model->$type->super_models->$subtype->data, $datatype)){
 					
-					$valid_type = $this->model->$type->super_models->$subtype->data->$datatype->valid_type;
+					$valid_type_string = $this->model->$type->super_models->$subtype->data->$datatype->valid_type;
 					
-					$valid_type = explode(".", $valid_type);
+					$valid_type = explode(".", $valid_type_string);
 					$validity = $this->valid;
 					$valid_type_exists = false;
 					foreach($valid_type as $valid_type_id){
@@ -602,10 +602,18 @@ class Requests
 								}
 							}
 						}
+					} else {
+						print_r("valid type [".$valid_type_string."] not valid.");
 					}
 					
+				} else {
+					print_r("model datatype [".$datatype."] does not exist.");
 				}
-			}
+			} else {
+			print_r("super model subtype [".$subtype."] does not exist.");
+		}
+		} else {
+			print_r("model type [".$type."] does not exist.");
 		}
 		
 		return $valid_opt;
