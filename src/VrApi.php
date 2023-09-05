@@ -110,7 +110,7 @@ class VrApi {
 				$key_model = $key_pair[0];
 				$key_super_model = $key_pair[1];
 				if(array_key_exists('data', $array)){
-					foreach($array['data'] as $option => $value){
+					foreach($array['data'] as $option_key => $value){
 						if(!$Requests->validate_option($key_model, $key_super_model, $option_key, $value)){
 							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$option_key.'=>'.$value.']');
 							return -5;
