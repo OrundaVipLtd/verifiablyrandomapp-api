@@ -514,7 +514,7 @@ class Requests
 	
 	public function ifObExists($obName){
 		$exists=false;
-		$key_pair = split(":", $obName);
+		$key_pair = explode(":", $obName);
 		if(count($key_pair)==2){
 			if(property_exists($this->model, $key_pair[0])){
 				if(property_exists($this->model->$key_pair[0]->super_models, $key_pair[1])){
