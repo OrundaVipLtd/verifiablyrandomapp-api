@@ -612,7 +612,7 @@ class Requests
 								}
 							}
 						} else {
-							print_r($validity);
+							var_dump($validity);
 							print_r("validate function does not exists.\r\n");
 						}
 					} else {
