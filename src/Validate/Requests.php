@@ -416,7 +416,7 @@ class Requests
 		$this->model->string->super_models->email->data->custom_name->valid_array = ['string'];
 		$this->model->string->super_models->email->data->custom_domain = new \stdClass();
 		$this->model->string->super_models->email->data->custom_domain->valid_type = 'array.custom.domain';
-		$this->model->string->super_models->email->data->custom_doamin->valid_array = ['name','name.ext'];
+		$this->model->string->super_models->email->data->custom_domain->valid_array = ['name','name.ext'];
 		
 		
 		$this->model->string->super_models->domain = new \stdClass();
