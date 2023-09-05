@@ -594,6 +594,8 @@ class Requests
 							$validity = $validity->$valid_type_id;
 						} else {
 							if($valid_type_exists){$valid_type_exists=false;}
+							$validity=null;
+							break;
 						}
 					}
 					
