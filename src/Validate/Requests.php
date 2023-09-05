@@ -577,7 +577,7 @@ class Requests
 				if(property_exists($this->model->$type->super_models->$subtype->data, $datatype)){
 					
 					$valid_type = $this->model->$type->super_models->$subtype->data->$datatype->valid_type;
-					$valid_type = split(".");
+					$valid_type = explode(".", $valid_type);
 					$validity = $this->valid;
 					$valid_type_exists = false;
 					foreach($valid_type as $valid_type_id){
