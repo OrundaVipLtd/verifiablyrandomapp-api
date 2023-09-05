@@ -13,20 +13,517 @@ Ta ano e fuck. is feider me dean e amarach, tog le briste. le do thoil, anois :)
 class Requests
 {	
 	private $validObjects;
+	private $validDataMethods;
 	private $validOp;
-	private $valid_data;
+	private $valid;
+	private $model;
 	
 	public function __construct(){
 		$this->validObjects = ['natural','even','odd','irrational','prime','binary', 'hexadecimal','decimal','byte','email','domain','ip'];
 		
-		$this->valid_data = new \stdClass();
-		$this->valid_data->ip = new \stdClass();
-		$this->valid_data->ip->version_string_types = array('any','v4','v6');
-		$this->valid_data->ip->model_string_types = array('any','range','customer');
+		$this->valid = new \stdClass();
+		$this->valid->string = new \stdClass();
+		$this->valid->string->binary = new \stdClass();
+		$this->valid->string->binary->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->hexadecimal = new \stdClass();
+		$this->valid->string->hexadecimal->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->decimal = new \stdClass();
+		$this->valid->string->decimal->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->byte = new \stdClass();
+		$this->valid->string->byte->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->email = new \stdClass();
+		$this->valid->string->email->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->email->name = new \stdClass();
+		$this->valid->string->email->name->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->email->domain  = new \stdClass();
+		$this->valid->string->email->domain->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->email->ext = new \stdClass();
+		$this->valid->string->email->ext->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->domain = new \stdClass();
+		$this->valid->string->domain->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->domain->protocol = new \stdClass();
+		$this->valid->string->domain->protocol->validate = function($string=null){
+			$valid=false;
+			$protocols = ['http','https','ftp','sftp','ssh'];
+			if($string){
+				if(in_array($string, $protocols)){
+					$valid=true;
+				}
+			}
+			return $valid;
+		};
+		$this->valid->string->domain->name = new \stdClass();
+		$this->valid->string->domain->name->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->domain->ext = new \stdClass();
+		$this->valid->string->domain->ext->validate = function($string=null){
+			$valid=false;
+			if($string){
+				
+			}
+			return $valid;
+		};
+		$this->valid->string->ip = new \stdClass();
+		$this->valid->string->ip->validate = function($string=null){
+			$valid=false;
+			if($string){
+				if(filter_var($string, FILTER_VALIDATE_IPV4) || filter_var($string, FILTER_VALIDATE_IPV6)){
+					$valid=true;
+				}
+			}
+			return $valid;
+		};
+		$this->valid->string->ip->v4 = new \stdClass();
+		$this->valid->string->ip->v4->validate = function($string=null){
+			$valid=false;
+			if($string){
+				if(filter_var($string, FILTER_VALIDATE_IPV4)){
+					$valid=true;
+				}
+			}
+			return $valid;
+		};
+		$this->valid->string->ip->v6 = new \stdClass();
+		$this->valid->string->ip->v6->validate = function($string=null){
+			$valid=false;
+			if($string){
+				if(filter_var($number, FILTER_VALIDATE_IPV6)){
+					$valid=true;
+				}
+			}
+			return $valid;
+		};
+		$this->valid->number = new \stdClass();
+		$this->valid->number->natural = new \stdClass();
+		$this->valid->number->natural->validate = function($number=null){
+			$valid=false;
+			if($number){
+				
+			}
+			return $valid;
+		};
+		$this->valid->number->even = new \stdClass();
+		$this->valid->number->even->validate = function($number=null){
+			$valid=false;
+			if($number){
+				
+			}
+			return $valid;
+		};
+		$this->valid->number->odd = new \stdClass();
+		$this->valid->number->odd->validate  = function($number=null){
+			$valid=false;
+			if($number){
+				
+			}
+			return $valid;
+		};
+		$this->valid->number->irrational = new \stdClass();
+		$this->valid->number->irrational->validate = function($number=null){
+			$valid=false;
+			if($number){
+				
+			}
+			return $valid;
+		};
+		$this->valid->number->prime = new \stdClass();
+		$this->valid->number->prime->validate = function($number=null){
+			$valid=false;
+			if($number){
+				
+			}
+			return $valid;
+		};
+		
+		$this->valid->array = new \stdClass();
+		$this->valid->array->validate = function($array=null){
+			$valid = false;
+			if($array){
+				
+			}
+			return $valid;
+		};
+		$this->valid->array->string = new \stdClass();
+		$this->valid->array->string->binary = $this->valid->string->binary;
+		$this->valid->array->string->hexadecimal = $this->valid->string->hexadecimal;
+		$this->valid->array->string->decimal = $this->valid->string->decimal;
+		$this->valid->array->string->byte = $this->valid->string->byte;
+		$this->valid->array->string->email = $this->valid->string->email;
+		$this->valid->array->string->domain = $this->valid->string->ip;
+		$this->valid->array->string->ip = $this->valid->string->ip;
+		
+		$this->valid->array->number = new \stdClass();
+		$this->valid->array->number->natural = $this->valid->number->natural;
+		$this->valid->array->number->even = $this->valid->number->even;
+		$this->valid->array->number->odd = $this->valid->number->odd;
+		$this->valid->array->number->irrational = $this->valid->number->irrational;
+		$this->valid->array->number->prime = $this->valid->number->prime;
+		
+		$this->valid->array->custom = $this->valid->array;
+		
+		$this->valid->object = new \stdClass();
+		$this->valid->object->validate = function($object=null){
+			$valid = false;
+			if($object){
+				
+			}
+			return $valid;
+		};
+		$this->valid->object->string = new \stdClass();
+		$this->valid->object->string->binary = $this->valid->string->binary;
+		$this->valid->object->string->hexadecimal = $this->valid->string->hexadecimal;
+		$this->valid->object->string->decimal = $this->valid->string->decimal;
+		$this->valid->object->string->byte = $this->valid->string->byte;
+		$this->valid->object->string->email = $this->valid->string->email;
+		$this->valid->object->string->domain = $this->valid->string->ip;
+		$this->valid->object->string->ip = $this->valid->string->ip;
+		
+		$this->valid->object->number = new \stdClass();
+		$this->valid->object->number->natural = $this->valid->number->natural;
+		$this->valid->object->number->even = $this->valid->number->even;
+		$this->valid->object->number->odd = $this->valid->number->odd;
+		$this->valid->object->number->irrational = $this->valid->number->irrational;
+		$this->valid->object->number->prime = $this->valid->number->prime;
+		
+		$this->valid->object->custom = $this->valid->object;
+		
+		
+		
+		$this->model = new \stdClass();
+		$this->model->array = new \stdClass();
+		$this->model->object = new \stdClass();
+		$this->model->number = new \stdClass();
+		$this->model->string = new \stdClass();
+		$this->model->mediia = new \stdClass();
+		
+		$this->model->array->name = "Array";
+		$this->model->array->allow_sub_model = true;
+		$this->model->array->restricted_models = [];
+		$this->model->array->is_super_model = false;
+		
+		$this->model->object->name = "Object";
+		$this->model->object->allow_sub_model = true;
+		$this->model->object->restricted_models = [];
+		$this->model->object->is_super_model = false;
+		
+		$this->model->number->name = "Number";
+		$this->model->number->allow_sub_model = false;
+		$this->model->number->is_super_model = true;
+		$this->model->number->super_models = new \stdClass();
+		
+		$this->model->number->super_models->natural = new \stdClass();
+		$this->model->number->super_models->natural->name = "Natural";
+		$this->model->number->super_models->natural->is_rangeable = true;
+		$this->model->number->super_models->natural->min = 0;
+		$this->model->number->super_models->natural->max = "Infinity";
+		$this->model->number->super_models->natural->is_super_model = false;
+		$this->model->number->super_models->natural->data = new \stdClass();
+		$this->model->number->super_models->natural->data->mode = new \stdClass();
+		$this->model->number->super_models->natural->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->natural->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->number->super_models->odd = new \stdClass();
+		$this->model->number->super_models->odd->name = "Odd";
+		$this->model->number->super_models->odd->is_rangeable = true;
+		$this->model->number->super_models->odd->min = 0;
+		$this->model->number->super_models->odd->max = "Infinity";
+		$this->model->number->super_models->odd->is_super_model = false;
+		$this->model->number->super_models->odd->data = new \stdClass();
+		$this->model->number->super_models->odd->data->mode = new \stdClass();
+		$this->model->number->super_models->odd->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->odd->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->number->super_models->even = new \stdClass();
+		$this->model->number->super_models->even->name = "Even";
+		$this->model->number->super_models->even->is_rangeable = true;
+		$this->model->number->super_models->even->min = 0;
+		$this->model->number->super_models->even->max = "Infinity";
+		$this->model->number->super_models->even->is_super_model = false;
+		$this->model->number->super_models->even->data = new \stdClass();
+		$this->model->number->super_models->even->data->mode = new \stdClass();
+		$this->model->number->super_models->even->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->even->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->number->super_models->irrational = new \stdClass();
+		$this->model->number->super_models->irrational->name = "Irrational";
+		$this->model->number->super_models->irrational->is_rangeable = true;
+		$this->model->number->super_models->irrational->min = 0;
+		$this->model->number->super_models->irrational->max = "Infinity";
+		$this->model->number->super_models->irrational->is_super_model = false;
+		$this->model->number->super_models->irrational->data = new \stdClass();
+		$this->model->number->super_models->irrational->data->mode = new \stdClass();
+		$this->model->number->super_models->irrational->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->irrational->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->number->super_models->prime = new \stdClass();
+		$this->model->number->super_models->prime->name = "Prime";
+		$this->model->number->super_models->prime->is_rangeable = true;
+		$this->model->number->super_models->prime->min = 1;
+		$this->model->number->super_models->prime->max = "Infinity";
+		$this->model->number->super_models->prime->is_super_model = false;
+		$this->model->number->super_models->prime->data = new \stdClass();
+		$this->model->number->super_models->prime->data->mode = new \stdClass();
+		$this->model->number->super_models->prime->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->prime->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->string->name = "String";
+		$this->model->string->allow_sub_model = false;
+		$this->model->string->restricted_models = [];
+		$this->model->string->is_super_model = true;
+		$this->model->string->super_models = new \stdClass();
+		
+		$this->model->string->super_models->binary = new \stdClass();
+		$this->model->string->super_models->binary->name = "Binary";
+		$this->model->string->super_models->binary->is_rangeable = true;
+		$this->model->string->super_models->binary->is_sizeable = true;
+		$this->model->string->super_models->binary->min = 0;
+		$this->model->string->super_models->binary->max = "Infinity";
+		$this->model->string->super_models->binary->min_size = 0;
+		$this->model->string->super_models->binary->max_size = "Infinity";
+		$this->model->string->super_models->binary->is_super_model = false;
+		$this->model->string->super_models->binary->data = new \stdClass();
+		$this->model->string->super_models->binary->data->mode = new \stdClass();
+		$this->model->string->super_models->binary->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->binary->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->string->super_models->binary->data->range = new \stdClass();
+		$this->model->string->super_models->binary->data->range->valid_type = "number.natural";
+		$this->model->string->super_models->binary->data->size = new \stdClass();
+		$this->model->string->super_models->binary->data->size->valid_type = 'number.natural';
+		$this->model->string->super_models->binary->data->custom = new \stdClass();
+		$this->model->string->super_models->binary->data->custom->valid_type = 'array.custom.string.binary';
+			
+		$this->model->string->super_models->byte = new \stdClass();
+		$this->model->string->super_models->byte->name = "Byte";
+		$this->model->string->super_models->byte->is_rangeable = true;
+		$this->model->string->super_models->byte->is_sizeable = true;
+		$this->model->string->super_models->byte->min = 0;
+		$this->model->string->super_models->byte->max = "Infinity";
+		$this->model->string->super_models->byte->min_size = 0;
+		$this->model->string->super_models->byte->max_size = "Infinity";
+		$this->model->string->super_models->byte->is_super_model = false;
+		$this->model->string->super_models->byte->data = new \stdClass();
+		$this->model->string->super_models->byte->data->mode = new \stdClass();
+		$this->model->string->super_models->byte->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->byte->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->string->super_models->byte->data->range = new \stdClass();
+		$this->model->string->super_models->byte->data->range->valid_type = 'number.natural';
+		$this->model->string->super_models->byte->data->size = new \stdClass();
+		$this->model->string->super_models->byte->data->size->valid_type = 'number.natural';
+		$this->model->string->super_models->byte->data->custom = new \stdClass();
+		$this->model->string->super_models->byte->data->custom->valid_type = 'array.custom.string.byte';
+		
+		$this->model->string->super_models->hexadecimal = new \stdClass();
+		$this->model->string->super_models->hexadecimal->name = "Hexadecimal";
+		$this->model->string->super_models->hexadecimal->is_rangeable = true;
+		$this->model->string->super_models->hexadecimal->is_sizeable = true;
+		$this->model->string->super_models->hexadecimal->min = 0;
+		$this->model->string->super_models->hexadecimal->max = "Infinity";
+		$this->model->string->super_models->hexadecimal->min_size = 0;
+		$this->model->string->super_models->hexadecimal->max_size = "Infiniity";
+		$this->model->string->super_models->hexadecimal->is_super_model = false;
+		$this->model->string->super_models->hexadecimal->data = new \stdClass();
+		$this->model->string->super_models->hexadecimal->data->mode = new \stdClass();
+		$this->model->string->super_models->hexadecimal->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->hexadecimal->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->string->super_models->hexadecimal->data->range = new \stdClass();
+		$this->model->string->super_models->hexadecimal->data->range->valid_type = 'number.natural';
+		$this->model->string->super_models->hexadecimal->data->size = new \stdClass();
+		$this->model->string->super_models->hexadecimal->data->size->valid_type = 'number.natural';
+		$this->model->string->super_models->hexadecimal->data->custom = new \stdClass();
+		$this->model->string->super_models->hexadecimal->data->custom->valid_type = 'array.custom.string.hexadecimal';
+		
+		
+		$this->model->string->super_models->email = new \stdClass();
+		$this->model->string->super_models->email->name = "Email";
+		$this->model->string->super_models->email->is_rangeable = true;
+		$this->model->string->super_models->email->is_sizeable = true;
+		$this->model->string->super_models->email->min = 0;
+		$this->model->string->super_models->email->max = "Infinity";
+		$this->model->string->super_models->email->min_size = 0;
+		$this->model->string->super_models->email->max_size = "Infiniity";
+		$this->model->string->super_models->email->is_super_model = false;
+		$this->model->string->super_models->email->data = new \stdClass();
+		$this->model->string->super_models->email->data->name = new \stdClass();
+		$this->model->string->super_models->email->data->name->valid_type = 'array.string';
+		$this->model->string->super_models->email->data->name->valid_array = ['any', 'firstname.lastname.female', 'firstname.lastname.male', 'custom'];
+		$this->model->string->super_models->email->data->domain = new \stdClass();
+		$this->model->string->super_models->email->data->domain->valid_type = 'array.string';
+		$this->model->string->super_models->email->data->domain->valid_array = ['any', 'custom'];
+		$this->model->string->super_models->email->data->ext = new \stdClass();
+		$this->model->string->super_models->email->data->ext->valid_type = ['array.domain.ext'];
+		$this->model->string->super_models->email->data->ext->valid_array = ['any','com','uk','co.uk','ie'];
+		$this->model->string->super_models->email->data->custom_name = new \stdClass();
+		$this->model->string->super_models->email->data->custom_name->valid_type = 'array.custom.string';
+		$this->model->string->super_models->email->data->custom_name->valid_array = ['string'];
+		$this->model->string->super_models->email->data->custom_domain = new \stdClass();
+		$this->model->string->super_models->email->data->custom_domain->valid_type = 'array.custom.domain';
+		$this->model->string->super_models->email->data->custom_doamin->valid_array = ['name','name.ext'];
+		
+		
+		$this->model->string->super_models->domain = new \stdClass();
+		$this->model->string->super_models->domain->name = "Domain";
+		$this->model->string->super_models->domain->is_rangeable = true;
+		$this->model->string->super_models->domain->is_sizeable = true;
+		$this->model->string->super_models->domain->min = 0;
+		$this->model->string->super_models->domain->max = "Infinity";
+		$this->model->string->super_models->domain->min_size = 0;
+		$this->model->string->super_models->domain->max_size = "Infiniity";
+		$this->model->string->super_models->domain->is_super_model = false;
+		$this->model->string->super_models->domain->data = new \stdClass();
+		$this->model->string->super_models->domain->data->protocol = new \stdClass();
+		$this->model->string->super_models->domain->data->protocol->valid_type = 'array.domain.protocol';
+		$this->model->string->super_models->domain->data->protocol->valid_array = ['none', 'http', 'https', 'ftp'];
+		$this->model->string->super_models->domain->data->name = new \stdClass();
+		$this->model->string->super_models->domain->data->name->valid_type = 'array.string';
+		$this->model->string->super_models->domain->data->name->valid_array = ['any','custom'];
+		$this->model->string->super_models->domain->data->ext = new \stdClass();
+		$this->model->string->super_models->domain->data->ext->valid_type = 'array.domain.ext';
+		$this->model->string->super_models->domain->data->ext->valid_array = ['any','com','uk','co.uk','ie'];
+		$this->model->string->super_models->domain->data->custom = new \stdClass();
+		$this->model->string->super_models->domain->data->custom->valid_type = 'array.custom.domain';
+		$this->model->string->super_models->domain->data->custom->valid_array = ['protocol.name.ext','name.ext'];
+			
+		$this->model->string->super_models->ip = new \stdClass();
+		$this->model->string->super_models->ip->name = "IP Address";
+		$this->model->string->super_models->ip->is_rangeable = true;
+		$this->model->string->super_models->ip->is_sizeable = false;
+		$this->model->string->super_models->ip->min = 0;
+		$this->model->string->super_models->ip->max = "Infinity";
+		$this->model->string->super_models->ip->min_size = 0;
+		$this->model->string->super_models->ip->max_size = "Infiniity";
+		$this->model->string->super_models->ip->is_super_model = false;
+		$this->model->string->super_models->ip->data = new \stdClass();
+		$this->model->string->super_models->ip->data->version = new \stdClass();
+		$this->model->string->super_models->ip->data->version->valid_type = 'array.string';
+		$this->model->string->super_models->ip->data->version->valid_array = ['any', 'v4', 'v6'];
+		$this->model->string->super_models->ip->data->mode = new \stdClass();
+		$this->model->string->super_models->ip->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->ip->data->mode->valid_array = ['any', 'customer', 'range'];
+		$this->model->string->super_models->ip->data->range_v4 = new \stdClass();
+		$this->model->string->super_models->ip->data->range_v4->valid_type = 'ip.v4';
+		$this->model->string->super_models->ip->data->range_v6 = new \stdClass();
+		$this->model->string->super_models->ip->data->range_v6->valid_type = 'ip.v6';
+		$this->model->string->super_models->ip->data->custom = new \stdClass();
+		$this->model->string->super_models->ip->data->custom->valid_type = 'array.custom.ip';
+		$this->model->string->super_models->ip->data->custom->valid_array = ['v4', 'v6'];
+		
+		$this->model->string->super_models->date = new \stdClass();
+		$this->model->string->super_models->date->name = "Date";
+		$this->model->string->super_models->date->is_rangeable = true;
+		$this->model->string->super_models->date->is_sizeable = false;
+		$this->model->string->super_models->date->min = 0;
+		$this->model->string->super_models->date->max = "Infinity";
+		$this->model->string->super_models->date->min_size = 0;
+		$this->model->string->super_models->date->max_size = "Infiniity";
+		$this->model->string->super_models->date->is_super_model = false;
+		$this->model->string->super_models->date->data = new \stdClass();
+		$this->model->string->super_models->date->data->mode = new \stdClass();
+		$this->model->number->super_models->date->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->date->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->string->super_models->datetime = new \stdClass();
+		$this->model->string->super_models->datetime->name = "DateTime";
+		$this->model->string->super_models->datetime->is_rangeable = true;
+		$this->model->string->super_models->datetime->is_sizeable = false;
+		$this->model->string->super_models->datetime->min = 0;
+		$this->model->string->super_models->datetime->max = "Infinity";
+		$this->model->string->super_models->datetime->min_size = 0;
+		$this->model->string->super_models->datetime->max_size = "Infiniity";
+		$this->model->string->super_models->datetime->is_super_model = false;
+		$this->model->string->super_models->datetime->data = new \stdClass();
+		$this->model->string->super_models->datetime->data->mode = new \stdClass();
+		$this->model->number->super_models->datetime->data->mode->valid_type = 'array.string';
+		$this->model->number->super_models->datetime->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		$this->model->string->super_models->time = new \stdClass();
+		$this->model->string->super_models->time->name = "Time";
+		$this->model->string->super_models->time->is_rangeable = true;
+		$this->model->string->super_models->time->is_sizeable = false;
+		$this->model->string->super_models->time->min = 0;
+		$this->model->string->super_models->time->max = "Infinity";
+		$this->model->string->super_models->time->min_size = 0;
+		$this->model->string->super_models->time->max_size = "Infiniity";
+		$this->model->string->super_models->time->is_super_model = false;
+		$this->model->string->super_models->time->data = new \stdClass();
+		$this->model->string->super_models->time->data->mode = new \stdClass();
+		$this->model->string->super_models->time->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->time->data->mode->valid_array = ['any', 'custom', 'range'];
+		
+		
+		/* Add Media + Other Models */
 	}
 	
 	public function ifObExists($obName){
-		return in_array($obName, $this->validObjects);
+		$exists=false;
+		$key_pair = split(":", $obName);
+		if(count($key_pair)==2){
+			if(property_exists($this->model, $key_pair[0])){
+				if(property_exists($this->model->$key_pair[0]->super_models, $key_pair[1])){
+					$exists=true;
+				}
+			}
+		}
+		
+		return $exists;
 	}
 	
 	public function ifOpExists($opName){
@@ -70,510 +567,42 @@ class Requests
 	
 	
 	
-	public function validate_option($type, $options){
+	public function validate_option($type, $subtype, $datatype, $options){
 		$valid_opt = false;
-		switch($type){
-			case 'natural':
-				return is_integer($options);
-			break;
-			case 'natural_range':
-				$valid = false;
-				$min=0;
-				$max=PHP_INT_MAX;
-				if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-					if($options['min']>=$min && $options['max']<=$max && $options['max']>$options['min']){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'natural_custom':
-				$valid=false;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_integer($option) && $option>=$min && $option<=$max){
-							$valid=true;
+		
+		if(property_exists($this->model, $type)){
+			if(property_exists($this->model->$type->super_models, $subtype)){
+				if(property_exists($this->model->$type->super_models->$subtype->data, $datatype)){
+					
+					$valid_type = $this->model->$type->super_models->$subtype->data->$datatype->valid_type;
+					$valid_type = split(".");
+					$validity = $this->valid;
+					$valid_type_exists = false;
+					foreach($valid_type as $valid_type_id){
+						if(property_exists($validity, $valid_type_id)){
+							if(!$valid_type_exists){$valid_type_exists=true;}
+							$validity = $validity->$valid_type_id;
 						} else {
-							$valid=false;
-							break;
+							if($valid_type_exists){$valid_type_exists=false;}
 						}
 					}
-				}
-				return $valid;
-			break;
-			case 'even':
-				$valid = false;
-				if(is_integer($options)){
-					if($options%2==0){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'even_range':
-				$min=0;
-				$max=PHP_INT_MAX;
-				if(gettype($options)=='array'){
-					if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-						if(is_integer($options['max']) && is_integer($options['min'])){
-						if($options['max']%2==0 && $options['min']%2==0 && $options['min']>=$min && $options['max']<=$max && $options['max']>$options['min']){
-						}
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'even_custom':
-				$valid = false;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_integer($option)){
-							$valid=true;
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'odd':
-				$valid = false;
-				if(is_integer($options)){
-					$valid=true;
-				}
-				return $valid;
-			break;
-			case 'odd_range':
-				$valid = false;
-				if(gettype($options)){
-					foreach($options as $option){
-						if(is_integer($option)){
-							if($option%2!=0){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
+					
+					if($valid_type_exists){
+						if(property_exists($validity, "validate")){
+							if($validity->validate($options)){
+								$valid_opt = true;
 							}
 						}
 					}
+					
 				}
-				return $valid;
-			break;
-			case 'odd_custom':
-				$valid = false;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_integer($option)){
-							if($option%2!=0){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'irrational':
-				$valid = false;
-				if(is_float($options)){
-					$valid=true;
-				}
-				return $valid;
-			break;
-			case 'irrational_range':
-				$valid=false;
-				$min=0;
-				$min=PHP_FLOAT_MAX;
-				if(gettype($options)=='array'){
-					if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-						if($options['min']>=$min && $options['max']<=$max && $options['max']>$options['min']){
-							$valid=true;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'irrational_custom':
-				$valid = false;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_float($option)){
-							$valid=true;
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'prime':
-				$valid = false;
-				if(gettype($options)){
-					if(gmp_prob_prime($options)!=0){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'prime_range':
-				$valid=false;
-				$min=0;
-				$max=PHP_INT_MAX;
-				if(gettype($options)=='array'){
-					if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-						if($options['min']>=$min && $options['max']<=$max && $options['max']>$options['min']){
-							$valid=true;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'prime_custom':
-				$valid=false;
-				if(gettype($options)=='array'){
-					foreach($options as $options){
-						if(is_integer($option)){
-							if(gmp_prob_prime($option)!=0){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'string':
-				$valid=false;
-				if(is_string($option)){
-					$valid;
-				}
-				return $valid;
-			break;
-			case 'string_range':
-				$valid=false;
-				$min=1;
-				$max=(1204*1024*1024*2);
-				if(gettype($options)=='array'){
-					if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-						if($options['min']>=$min && $options['max']<=$max && $options['max']>$options['min']){
-							$valid=true;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'string_custom':
-				$valid=false;
-				$maxstr=256;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_string($option)){
-							if(!empty($option) && strlen($option)<$maxstr){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'email':
-				$valid=false;
-				if(filter_var($option, FILTER_VALIDATE_EMAIL)){
-					$valid=true;
-				}
-				return $valid;
-			break;
-			case 'email_name':
-				$valid=false;
-				$maxtsr=5;
-				if(is_integer($option)){
-					if($option>0 && $option<=$maxstr){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'email_name_custom':
-				$valid=false;
-				
-				/*
-				 * RFC 3696 Erratum 1003
-				 * In addition to restrictions on syntax, there is a length limit on<br>
-				 * email addresses.  That limit is a maximum of 64 characters (octets)
-				 * in the "local part" (before the "@") and a maximum of 255 characters
-				 * (octets) in the domain part (after the "@") for a total length of 320
-				 * characters.
-				 */
-				$local_limit = 64;
-				/*
-				 * Fake Domain for Local Prefix Character validation with filter_var
-				 */
-				$fake_domain="@domain.com";
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_string($option)){
-							if(strlen($option)<=$local_limit){
-								if(filter_var($option+"@domain.com", FILTER_VALIDATE_EMAIL)){
-									$valid=true;
-								} else {
-									$valid=false;
-									break;
-								}
-							} else {
-								$valid=false;
-								break;
-							}
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'binary':
-				$valid=true;
-				$maxtsr=2048;
-				if(is_string($options)){
-					if(strlen($options)<=$maxtsr){
-					for($n = 0; $n < strlen($options); $n++){
-						$c=$options[$n];
-						if($c!="1"||$c!="0"){
-							$valid=false;
-							break;
-						}
-					}
-					} else {$valid=false;}
-				} else {$valid=false;}
-				return $valid;
-			break;
-			case 'binary_custom':
-				$valid=false;
-				$terminate=false;
-				$maxstr=128;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_string($options)){
-							if(strlen($option)<$maxtsr){
-								for($n=0; $n < strlen($option); $n++){
-									$c=$options[$n];
-									if($c=="1"||$c=="0"){
-										$valid=true;
-									} else {
-										$valid=false;
-										$terminate=true;
-										break;
-									}
-								}
-								if($terminate){break;}
-							} else {
-								$valid=false;
-								break;
-							}
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'domain':
-				$valid=false;
-				if(filter_var($option, FILTER_VALIDATE_DOMAIN)){
-					$valid=true;
-				}
-				return $valid;
-			break;
-			case 'domain_name':
-				$valid=false;
-				$maxstr=5;
-				if(is_integer($options)){
-					if($options>=0 && $options<=$maxstr){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'domain_name_custom':
-				$valid=false;
-				
-				/*
-				 * Fake domain Extension for validating character-set with filter_var.
-				 */
-				$fake_domain_ext=".com";
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_string($option)){
-							if(filter_var($option.$fake_domain_ext, FILTER_VALIDATE_DOMAIN)){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'domain_ext':
-				$valid=false;
-				$maxtstr=5;
-				if(is_integer($options)){
-					if($options>=0 && $options<=$maxtsr){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'domain_ext_custom':
-				$valid=false;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_string($option)){
-							if(filter_var("i".$option, FILTER_VALIDATE_DOMAIN)){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'ipv4':
-				$valid=false;
-				if(is_string($options)){
-					if(filter_var($options, FILTER_VALIDATE_IPV4)){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'ipv4_range':
-				$valid=false;
-				$min=ip2long("0.0.0.0");
-				$max=ip2long("255.255.255.255");
-				if(gettype($options)=='array'){
-					if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-						if(filter_var($options['min'], FILTER_VALIDATE_IPV4)){
-						if(filter_var($options['max'], FILTER_VALIDATE_IPV4)){
-							$ipmin=ip2long($options['min']);
-							$ipmax=ip2long($options['max']);
-							if($ipmin>=$min && $ipmax<=$max && $ipmax>$ipmin){
-								$valid=true;
-							}
-						}
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'ipv4_custom':
-				$valid=false;
-				if(gettype($options)=='array'){
-					foreach($options as $options){
-						if(is_string($option)){
-							if(filter_var($option, FILTER_VALIDATE_IPV4)){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'ipv6':
-				$valid=false;
-				if(is_string($option)){
-					if(filter_var($options, FILTER_VALIDATAE_IPV6)){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'ipv6_range':
-				$valid=false;
-				$min=gmp_import(inet_pton("0000:0000:0000:0000:0000:0000:0000:0000"));
-				$max=gmp_import(inet_pton("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"));
-				if(gettype($options)=='array'){
-					if(array_key_exists('min', $options) && array_key_exists('max', $options)){
-						if(filter_var($options['min'], FILTER_VALIDATE_IPV6)){	
-							if(filter_var($options['min'], FILTER_VALIDATE_IPV6)){
-							$ipmin=gmp_import(inet_pton($options['min']));
-							$ipmax=gmp_import(inet_pton($options['max']));
-							if($ipmin>=$min && $ipmax<=$max && $ipmax > $ipmin){
-								$valid=true;
-							}
-						}
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'ipv6_custom':
-				$valid=false;
-				if(gettype($options)=='array'){
-					foreach($options as $option){
-						if(is_string($option)){
-							if(filter_var($option, FILTER_VALIDATE_IPV6)){
-								$valid=true;
-							} else {
-								$valid=false;
-								break;
-							}
-						} else {
-							$valid=false;
-							break;
-						}
-					}
-				}
-				return $valid;
-			break;
-			case 'ip_version_string_type':
-				$valid = false;
-				if(gettype($options)=='string'){
-					if(in_array($options, $this->valid_data->ip->version_string_types)){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			case 'ip_model_string_type':
-				$valid = false;
-				if(gettype($options)=='string'){
-					if(in_array($options, $this->valid_data->ip->model_string_types)){
-						$valid=true;
-					}
-				}
-				return $valid;
-			break;
-			default:
-				return false;
-			break;
+			}
 		}
+		
+		return $valid_opt;
 	}
+	
+	
 }
 
 ?>
