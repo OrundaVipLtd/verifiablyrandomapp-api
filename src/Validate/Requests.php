@@ -601,7 +601,7 @@ class Requests
 					
 					if($valid_type_exists){
 						print_r("valid type [".$valid_type_string."] valid.\r\n");
-						if(method_exists($validity, "validate")){
+						if(function_exists($validity, "validate")){
 							if($valid_type=='array.string'){
 								if($validity->validate($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
 									$valid_opt=true;
@@ -612,7 +612,6 @@ class Requests
 								}
 							}
 						} else {
-							var_dump($validity);
 							print_r("validate function does not exists.\r\n");
 						}
 					} else {
