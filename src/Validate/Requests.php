@@ -477,8 +477,8 @@ class Requests
 		$this->model->string->super_models->date->is_super_model = false;
 		$this->model->string->super_models->date->data = new \stdClass();
 		$this->model->string->super_models->date->data->mode = new \stdClass();
-		$this->model->number->super_models->date->data->mode->valid_type = 'array.string';
-		$this->model->number->super_models->date->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->string->super_models->date->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->date->data->mode->valid_array = ['any', 'custom', 'range'];
 		
 		$this->model->string->super_models->datetime = new \stdClass();
 		$this->model->string->super_models->datetime->name = "DateTime";
