@@ -577,6 +577,7 @@ class Requests
 				if(property_exists($this->model->$type->super_models->$subtype->data, $datatype)){
 					
 					$valid_type = $this->model->$type->super_models->$subtype->data->$datatype->valid_type;
+					
 					$valid_type = explode(".", $valid_type);
 					$validity = $this->valid;
 					$valid_type_exists = false;
@@ -591,8 +592,14 @@ class Requests
 					
 					if($valid_type_exists){
 						if(property_exists($validity, "validate")){
-							if($validity->validate($options)){
-								$valid_opt = true;
+							if($valid_type=='array.string'){
+								if(in_array($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
+									$valid_opt=true;
+								}
+							} else {
+								if($validity->validate($options)){
+									$valid_opt = true;
+								}
 							}
 						}
 					}
