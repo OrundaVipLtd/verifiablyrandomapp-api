@@ -106,10 +106,13 @@ class VrApi {
 			return $valid;
 		} else {
 			if($Requests->ifObExists($array['key'])){
+				$key_pair = explode(":",$array['key']);
+				$key_model = $key_pair[0];
+				$key_super_model = $key_pair[1];
 				if(array_key_exists('data', $array)){
-					foreach($array['data'] as $key => $value){
-						if(!$Requests->validate_option($key, $value)){
-							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$key.'=>'.$value.']');
+					foreach($array['data'] as $option => $value){
+						if(!$Requests->validate_option($key_model, $key_super_model, $option_key, $value)){
+							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$option_key.'=>'.$value.']');
 							return -5;
 						} else {
 							return 0;
