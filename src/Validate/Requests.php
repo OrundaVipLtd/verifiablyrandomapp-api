@@ -591,6 +591,7 @@ class Requests
 					}
 					
 					if($valid_type_exists){
+						print_r("valid type [".$valid_type_string."] valid.");
 						if(property_exists($validity, "validate")){
 							if($valid_type=='array.string'){
 								if(in_array($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
