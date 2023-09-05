@@ -516,8 +516,10 @@ class Requests
 		$exists=false;
 		$key_pair = explode(":", $obName);
 		if(count($key_pair)==2){
-			if(property_exists($this->model, $key_pair[0])){
-				if(property_exists($this->model->$key_pair[0]->super_models, $key_pair[1])){
+			$model = $key_pair[0];
+			if(property_exists($this->model, $model)){
+				$super_model = $key_pair[1];
+				if(property_exists($this->model->$model->super_models, $super_model)){
 					$exists=true;
 				}
 			}
