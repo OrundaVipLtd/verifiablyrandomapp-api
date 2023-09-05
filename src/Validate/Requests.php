@@ -603,7 +603,7 @@ class Requests
 						print_r("valid type [".$valid_type_string."] valid.\r\n");
 						if(property_exists($validity, "validate")){
 							$run_validate = $validity->validate;
-							if($valid_type=='array.string'){
+							if($valid_type_string=='array.string'){
 								if($run_validate($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
 									$valid_opt=true;
 								}
