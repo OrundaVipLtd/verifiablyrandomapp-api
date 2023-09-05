@@ -491,8 +491,8 @@ class Requests
 		$this->model->string->super_models->datetime->is_super_model = false;
 		$this->model->string->super_models->datetime->data = new \stdClass();
 		$this->model->string->super_models->datetime->data->mode = new \stdClass();
-		$this->model->number->super_models->datetime->data->mode->valid_type = 'array.string';
-		$this->model->number->super_models->datetime->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->string->super_models->datetime->data->mode->valid_type = 'array.string';
+		$this->model->string->super_models->datetime->data->mode->valid_array = ['any', 'custom', 'range'];
 		
 		$this->model->string->super_models->time = new \stdClass();
 		$this->model->string->super_models->time->name = "Time";
