@@ -203,6 +203,13 @@ class Requests
 			return $valid;
 		};
 		$this->valid->array->string = new \stdClass();
+		$this->valid->array->string->validate = function($needle, $haystack){
+			$valid = false;
+			if(in_array($needle, $haystack)){
+				$valid=true;
+			}
+			return $valid;
+		};
 		$this->valid->array->string->binary = $this->valid->string->binary;
 		$this->valid->array->string->hexadecimal = $this->valid->string->hexadecimal;
 		$this->valid->array->string->decimal = $this->valid->string->decimal;
@@ -591,10 +598,10 @@ class Requests
 					}
 					
 					if($valid_type_exists){
-						print_r("valid type [".$valid_type_string."] valid.");
+						print_r("valid type [".$valid_type_string."] valid.\n");
 						if(property_exists($validity, "validate")){
 							if($valid_type=='array.string'){
-								if(in_array($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
+								if($validity->validate($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
 									$valid_opt=true;
 								}
 							} else {
@@ -602,6 +609,8 @@ class Requests
 									$valid_opt = true;
 								}
 							}
+						} else {
+							print_r("validate function exists");
 						}
 					} else {
 						print_r("valid type [".$valid_type_string."] not valid.");
