@@ -143,7 +143,7 @@ class VrApi {
 	public function test(){
 		$Requests = new Requests();
 		
-		$model_types = get_object_vars($Requests->model);
+		$model_types = get_object_vars($Requests->getModel());
 		
 		$model = [];
 		
