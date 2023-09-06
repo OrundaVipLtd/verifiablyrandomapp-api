@@ -248,7 +248,7 @@ class VrApi {
 		
 		
 		
-		
+		return $responses;
 		
 		
 	}
