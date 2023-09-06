@@ -243,7 +243,7 @@ class VrApi {
 			$request['size'] = 10;
 			$modeled_request = array("request"=>array($request), "save"=>true);
 			$this->model($modeled_request);
-			$responses[] = $api->response()->getBody()->getContents();
+			$responses[] = $this->response()->getBody()->getContents();
 		}
 		
 		
