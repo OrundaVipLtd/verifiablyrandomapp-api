@@ -287,6 +287,11 @@ class Requests
 		$this->model->number->super_models->natural->data->mode = new \stdClass();
 		$this->model->number->super_models->natural->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->natural->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->number->super_models->natural->data->range = new \stdClass();
+		$this->model->number->super_models->natural->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->natural->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
+		$this->model->number->super_models->natural->data->custom = new \stdClass();
+		$this->model->number->super_models->natural->data->custom->valid_type = 'array.custom.number.natural';
 		
 		$this->model->number->super_models->odd = new \stdClass();
 		$this->model->number->super_models->odd->name = "Odd";
@@ -298,6 +303,11 @@ class Requests
 		$this->model->number->super_models->odd->data->mode = new \stdClass();
 		$this->model->number->super_models->odd->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->odd->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->number->super_models->odd->data->range = new \stdClass();
+		$this->model->number->super_models->odd->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->odd->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
+		$this->model->number->super_models->odd->data->custom = new \stdClass();
+		$this->model->number->super_models->odd->data->custom->valid_type = 'array.custom.number.odd';
 		
 		$this->model->number->super_models->even = new \stdClass();
 		$this->model->number->super_models->even->name = "Even";
@@ -309,6 +319,11 @@ class Requests
 		$this->model->number->super_models->even->data->mode = new \stdClass();
 		$this->model->number->super_models->even->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->even->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->number->super_models->even->data->range = new \stdClass();
+		$this->model->number->super_models->even->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->even->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
+		$this->model->number->super_models->even->data->custom = new \stdClass();
+		$this->model->number->super_models->even->data->custom->valid_type = 'array.custom.number.even';
 		
 		$this->model->number->super_models->irrational = new \stdClass();
 		$this->model->number->super_models->irrational->name = "Irrational";
@@ -320,6 +335,11 @@ class Requests
 		$this->model->number->super_models->irrational->data->mode = new \stdClass();
 		$this->model->number->super_models->irrational->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->irrational->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->number->super_models->irrational->data->range = new \stdClass();
+		$this->model->number->super_models->irrational->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->irrational->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
+		$this->model->number->super_models->irrational->data->custom = new \stdClass();
+		$this->model->number->super_models->irrational->data->custom->valid_type = 'array.custom.number.irrational';
 		
 		$this->model->number->super_models->prime = new \stdClass();
 		$this->model->number->super_models->prime->name = "Prime";
@@ -331,6 +351,11 @@ class Requests
 		$this->model->number->super_models->prime->data->mode = new \stdClass();
 		$this->model->number->super_models->prime->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->prime->data->mode->valid_array = ['any', 'custom', 'range'];
+		$this->model->number->super_models->prime->data->range = new \stdClass();
+		$this->model->number->super_models->prime->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->prime->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
+		$this->model->number->super_models->prime->data->custom = new \stdClass();
+		$this->model->number->super_models->prime->data->custom->valid_type = 'array.custom.number.prime';
 		
 		$this->model->string->name = "String";
 		$this->model->string->allow_sub_model = false;
@@ -352,7 +377,8 @@ class Requests
 		$this->model->string->super_models->binary->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->binary->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->string->super_models->binary->data->range = new \stdClass();
-		$this->model->string->super_models->binary->data->range->valid_type = "number.natural";
+		$this->model->string->super_models->binary->data->range->valid_type = "array.key:value";
+		$this->model->string->super_models->binary->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->string->super_models->binary->data->size = new \stdClass();
 		$this->model->string->super_models->binary->data->size->valid_type = 'number.natural';
 		$this->model->string->super_models->binary->data->custom = new \stdClass();
@@ -372,7 +398,8 @@ class Requests
 		$this->model->string->super_models->byte->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->byte->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->string->super_models->byte->data->range = new \stdClass();
-		$this->model->string->super_models->byte->data->range->valid_type = 'number.natural';
+		$this->model->string->super_models->byte->data->range->valid_type = "array.key:value";
+		$this->model->string->super_models->byte->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->string->super_models->byte->data->size = new \stdClass();
 		$this->model->string->super_models->byte->data->size->valid_type = 'number.natural';
 		$this->model->string->super_models->byte->data->custom = new \stdClass();
@@ -392,7 +419,8 @@ class Requests
 		$this->model->string->super_models->hexadecimal->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->hexadecimal->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->string->super_models->hexadecimal->data->range = new \stdClass();
-		$this->model->string->super_models->hexadecimal->data->range->valid_type = 'number.natural';
+		$this->model->string->super_models->hexadecimal->data->range->valid_type = "array.key:value";
+		$this->model->string->super_models->hexadecimal->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->string->super_models->hexadecimal->data->size = new \stdClass();
 		$this->model->string->super_models->hexadecimal->data->size->valid_type = 'number.natural';
 		$this->model->string->super_models->hexadecimal->data->custom = new \stdClass();
@@ -411,19 +439,16 @@ class Requests
 		$this->model->string->super_models->email->data = new \stdClass();
 		$this->model->string->super_models->email->data->name = new \stdClass();
 		$this->model->string->super_models->email->data->name->valid_type = 'array.string';
-		$this->model->string->super_models->email->data->name->valid_array = ['any', 'firstname.lastname.female', 'firstname.lastname.male', 'custom'];
+		$this->model->string->super_models->email->data->name->valid_array = ['any', 'f.l.l', 'f.l.m', 'custom'];
 		$this->model->string->super_models->email->data->domain = new \stdClass();
 		$this->model->string->super_models->email->data->domain->valid_type = 'array.string';
 		$this->model->string->super_models->email->data->domain->valid_array = ['any', 'custom'];
 		$this->model->string->super_models->email->data->ext = new \stdClass();
 		$this->model->string->super_models->email->data->ext->valid_type = ['array.domain.ext'];
 		$this->model->string->super_models->email->data->ext->valid_array = ['any','com','uk','co.uk','ie'];
-		$this->model->string->super_models->email->data->custom_name = new \stdClass();
-		$this->model->string->super_models->email->data->custom_name->valid_type = 'array.custom.string';
-		$this->model->string->super_models->email->data->custom_name->valid_array = ['string'];
-		$this->model->string->super_models->email->data->custom_domain = new \stdClass();
-		$this->model->string->super_models->email->data->custom_domain->valid_type = 'array.custom.domain';
-		$this->model->string->super_models->email->data->custom_domain->valid_array = ['name','name.ext'];
+		$this->model->string->super_models->email->data->custom = new \stdClass();
+		$this->model->string->super_models->email->data->custom->valid_type = 'array.key:value';
+		$this->model->string->super_models->email->data->custom->valid_array = ["name"=>"array.string","domain"=>"array.string"];
 		
 		
 		$this->model->string->super_models->domain = new \stdClass();
@@ -438,7 +463,7 @@ class Requests
 		$this->model->string->super_models->domain->data = new \stdClass();
 		$this->model->string->super_models->domain->data->protocol = new \stdClass();
 		$this->model->string->super_models->domain->data->protocol->valid_type = 'array.domain.protocol';
-		$this->model->string->super_models->domain->data->protocol->valid_array = ['none', 'http', 'https', 'ftp'];
+		$this->model->string->super_models->domain->data->protocol->valid_array = ['any', 'none', 'http', 'https', 'ftp'];
 		$this->model->string->super_models->domain->data->name = new \stdClass();
 		$this->model->string->super_models->domain->data->name->valid_type = 'array.string';
 		$this->model->string->super_models->domain->data->name->valid_array = ['any','custom'];
@@ -465,13 +490,14 @@ class Requests
 		$this->model->string->super_models->ip->data->mode = new \stdClass();
 		$this->model->string->super_models->ip->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->ip->data->mode->valid_array = ['any', 'customer', 'range'];
-		$this->model->string->super_models->ip->data->range_v4 = new \stdClass();
-		$this->model->string->super_models->ip->data->range_v4->valid_type = 'ip.v4';
-		$this->model->string->super_models->ip->data->range_v6 = new \stdClass();
-		$this->model->string->super_models->ip->data->range_v6->valid_type = 'ip.v6';
+		$this->model->string->super_models->ip->data->range = new \stdClass();
+		$this->model->string->super_models->ip->data->range->valid_type = 'array.key:value';
+		$this->model->string->super_models->ip->data->range->valid_array = ['v4'=>'array.key:value','v6'=>'array.key:value'];
+		$this->model->string->super_models->ip->data->range->v4 = ['min'=>'string.ip.v4','max'=>'string.ip.v4'];
+		$this->model->string->super_models->ip->data->range->v6 = ['min'=>'string.ip.v4','max'=>'string.ip.v6'];
 		$this->model->string->super_models->ip->data->custom = new \stdClass();
 		$this->model->string->super_models->ip->data->custom->valid_type = 'array.custom.ip';
-		$this->model->string->super_models->ip->data->custom->valid_array = ['v4', 'v6'];
+		$this->model->string->super_models->ip->data->custom->valid_array = ['string.ip.v4', 'string.ip.v6'];
 		
 		$this->model->string->super_models->date = new \stdClass();
 		$this->model->string->super_models->date->name = "Date";
@@ -517,6 +543,14 @@ class Requests
 		
 		
 		/* Add Media + Other Models */
+	}
+	
+	public function getModel(){
+		return $this->model;
+	}
+	
+	public function getValid(){
+		return $this->valid;
 	}
 	
 	public function ifObExists($obName){
