@@ -150,62 +150,62 @@ class VrApi {
 		
 		$model[] = ["key"=>"number:natural","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"number:natural","data"=>["mode"=>"custom","custom"=>[13,100,25,19]]];
-		$model[] = ["key"=>"number:natural","data"=>["mode"=>"range","range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"number:natural","data"=>["mode"=>"range","range"=>["min"=>0]]];
 		
 		$model[] = ["key"=>"number:odd","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"number:odd","data"=>["mode"=>"custom","custom"=>[13,101,25,19]]];
-		$model[] = ["key"=>"number:odd","data"=>["mode"=>"range","range"=>["min"=>1,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"number:odd","data"=>["mode"=>"range","range"=>["min"=>1,"max"=>10000]]];
 		
 		$model[] = ["key"=>"number:even","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"number:even","data"=>["mode"=>"custom","custom"=>[12,100,24,18]]];
-		$model[] = ["key"=>"number:even","data"=>["mode"=>"range","range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"number:even","data"=>["mode"=>"range","range"=>["min"=>0]]];
 		
 		$model[] = ["key"=>"number:irrational","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"number:irrational","data"=>["mode"=>"custom","custom"=>[1.5,2.9,7.3]]];
-		$model[] = ["key"=>"number:irrational","data"=>["mode"=>"range","range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"number:irrational","data"=>["mode"=>"range","range"=>["min"=>0]]];
 		
 		$model[] = ["key"=>"number:prime","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"number:prime","data"=>["mode"=>"custom","custom"=>[11,13,27,19]]];
-		$model[] = ["key"=>"number:prime","data"=>["mode"=>"range","range"=>["min"=>1,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"number:prime","data"=>["mode"=>"range","range"=>["min"=>1]]];
 		
 		
 		
 		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","custom"=>["101010","111000","111110"]]];
-		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","range"=>["min"=>0]]];
 		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","size"=>10]];
 		
 		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","custom"=>["101010","111000","111110"],"range"=>["min"=>0,"max"=>"Infinity"]]];
 		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","custom"=>["101010","111000","111110"],"size"=>10]];
-		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>"Infinity"], "size"=>10]];
+		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>40], "size"=>10]];
 		
-		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","custom"=>["101010","111000","111110"],"range"=>["min"=>0,"max"=>"Infinity"],"size"=>10]];
+		$model[] = ["key"=>"string:binary","data"=>["mode"=>"any","custom"=>["101010","111000","111110"],"range"=>["min"=>0],"size"=>10]];
 		
 		
 		
 		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","custom"=>["10101000","11100011","11111001"]]];
-		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","range"=>["min"=>0]]];
 		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","size"=>10]];
 		
 		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","custom"=>["10101000","11100011","11111001"],"range"=>["min"=>0,"max"=>"Infinity"]]];
 		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","custom"=>["10101000","11100011","11111001"],"size"=>10]];
-		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>"Infinity"], "size"=>10]];
+		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>40], "size"=>10]];
 		
-		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","custom"=>["10101000","11100011","11111001"],"range"=>["min"=>0,"max"=>"Infinity"],"size"=>10]];
+		$model[] = ["key"=>"string:byte","data"=>["mode"=>"any","custom"=>["10101000","11100011","11111001"],"range"=>["min"=>0],"size"=>10]];
 		
 		
 		
 		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any"]];
 		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","custom"=>["55AA","CAFEB00B","FAB100"]]];
-		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","range"=>["min"=>0]]];
 		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","size"=>10]];
 		
-		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","custom"=>["55AA","CAFEB00B","FAB100"],"range"=>["min"=>0,"max"=>"Infinity"]]];
+		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","custom"=>["55AA","CAFEB00B","FAB100"],"range"=>["min"=>0,"max"=>50]]];
 		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","custom"=>["55AA","CAFEB00B","FAB100"],"size"=>10]];
-		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","range"=>["min"=>0,"max"=>"Infinity"], "size"=>10]];
+		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","range"=>["min"=>0], "size"=>10]];
 		
-		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","custom"=>["55AA","CAFEB00B","FAB100"],"range"=>["min"=>0,"max"=>"Infinity"],"size"=>10]];
+		$model[] = ["key"=>"string:hexadecimal","data"=>["mode"=>"any","custom"=>["55AA","CAFEB00B","FAB100"],"range"=>["min"=>0],"size"=>10]];
 		
 		
 		
