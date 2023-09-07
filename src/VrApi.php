@@ -242,8 +242,9 @@ class VrApi {
 		foreach($model as $request){
 			$request['size'] = 10;
 			$modeled_request = array("request"=>array($request), "save"=>true);
-			$this->model($modeled_request);
-			$responses[] = $this->response()->getBody()->getContents();
+			$this->runRequestValidation($modeled_request["request"]);
+			//$this->model($modeled_request);
+			//$responses[] = $this->response()->getBody()->getContents();
 		}
 		
 		
