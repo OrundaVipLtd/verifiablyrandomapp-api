@@ -242,7 +242,7 @@ class VrApi {
 		foreach($model as $request){
 			$request['size'] = 10;
 			$modeled_request = array("request"=>array($request), "save"=>true);
-			$error = $this->runRequestValidation($modeled_request["request"]);
+			$error = $this->runRequestValidation($modeled_request["request"][0]);
 			if($error<0){
 				$responses[] = $this->error["msg"]." :: ".$this->error["code"];
 				break;
