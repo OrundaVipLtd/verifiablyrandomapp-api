@@ -210,6 +210,43 @@ class Requests
 			}
 			return $valid;
 		};
+		$this->valid->array->scheme = new \stdClass();
+		$this->valid->array->scheme->validate = function($array, $array_scheme){
+			$valid=false;
+			foreach($array as $key => $value){
+				$valid_opt=false;
+				$valid=false;
+				if(array_key_exists($key, $array_scheme) || array_key_exists("*",$array_scheme)){
+					if(!array_key_exists($key, $array_scheme)){
+						$valid_type = $array_scheme["*"];
+					} else {
+						$valid_type = $array_scheme[$key];
+					}
+					
+					$valid_types = explode(".", $valid_type);
+					$validity = $this->valid;
+					foreach($valid_types as $type){
+						if(property_exists($validity, $type)){
+							$validity = $validity->$type;
+						} else {
+							$validity = false;
+							break;
+						}
+					}
+					
+					if($validity){
+						$valid_opt=$validity->validate($value);
+					}
+				}
+				
+				if(!$valid_opt){
+					break;
+				} else {
+					$valid=true;
+				}
+			}
+			return $valid;
+		};
 		$this->valid->array->string->binary = $this->valid->string->binary;
 		$this->valid->array->string->hexadecimal = $this->valid->string->hexadecimal;
 		$this->valid->array->string->decimal = $this->valid->string->decimal;
@@ -288,7 +325,7 @@ class Requests
 		$this->model->number->super_models->natural->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->natural->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->number->super_models->natural->data->range = new \stdClass();
-		$this->model->number->super_models->natural->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->natural->data->range->valid_type = "array.scheme";
 		$this->model->number->super_models->natural->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->number->super_models->natural->data->custom = new \stdClass();
 		$this->model->number->super_models->natural->data->custom->valid_type = 'array.custom.number.natural';
@@ -304,7 +341,7 @@ class Requests
 		$this->model->number->super_models->odd->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->odd->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->number->super_models->odd->data->range = new \stdClass();
-		$this->model->number->super_models->odd->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->odd->data->range->valid_type = "array.scheme";
 		$this->model->number->super_models->odd->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->number->super_models->odd->data->custom = new \stdClass();
 		$this->model->number->super_models->odd->data->custom->valid_type = 'array.custom.number.odd';
@@ -320,7 +357,7 @@ class Requests
 		$this->model->number->super_models->even->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->even->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->number->super_models->even->data->range = new \stdClass();
-		$this->model->number->super_models->even->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->even->data->range->valid_type = "array.scheme";
 		$this->model->number->super_models->even->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->number->super_models->even->data->custom = new \stdClass();
 		$this->model->number->super_models->even->data->custom->valid_type = 'array.custom.number.even';
@@ -336,7 +373,7 @@ class Requests
 		$this->model->number->super_models->irrational->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->irrational->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->number->super_models->irrational->data->range = new \stdClass();
-		$this->model->number->super_models->irrational->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->irrational->data->range->valid_type = "array.scheme";
 		$this->model->number->super_models->irrational->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->number->super_models->irrational->data->custom = new \stdClass();
 		$this->model->number->super_models->irrational->data->custom->valid_type = 'array.custom.number.irrational';
@@ -352,7 +389,7 @@ class Requests
 		$this->model->number->super_models->prime->data->mode->valid_type = 'array.string';
 		$this->model->number->super_models->prime->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->number->super_models->prime->data->range = new \stdClass();
-		$this->model->number->super_models->prime->data->range->valid_type = "array.key:value";
+		$this->model->number->super_models->prime->data->range->valid_type = "array.scheme";
 		$this->model->number->super_models->prime->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->number->super_models->prime->data->custom = new \stdClass();
 		$this->model->number->super_models->prime->data->custom->valid_type = 'array.custom.number.prime';
@@ -377,7 +414,7 @@ class Requests
 		$this->model->string->super_models->binary->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->binary->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->string->super_models->binary->data->range = new \stdClass();
-		$this->model->string->super_models->binary->data->range->valid_type = "array.key:value";
+		$this->model->string->super_models->binary->data->range->valid_type = "array.scheme";
 		$this->model->string->super_models->binary->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->string->super_models->binary->data->size = new \stdClass();
 		$this->model->string->super_models->binary->data->size->valid_type = 'number.natural';
@@ -398,7 +435,7 @@ class Requests
 		$this->model->string->super_models->byte->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->byte->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->string->super_models->byte->data->range = new \stdClass();
-		$this->model->string->super_models->byte->data->range->valid_type = "array.key:value";
+		$this->model->string->super_models->byte->data->range->valid_type = "array.scheme";
 		$this->model->string->super_models->byte->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->string->super_models->byte->data->size = new \stdClass();
 		$this->model->string->super_models->byte->data->size->valid_type = 'number.natural';
@@ -419,7 +456,7 @@ class Requests
 		$this->model->string->super_models->hexadecimal->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->hexadecimal->data->mode->valid_array = ['any', 'custom', 'range'];
 		$this->model->string->super_models->hexadecimal->data->range = new \stdClass();
-		$this->model->string->super_models->hexadecimal->data->range->valid_type = "array.key:value";
+		$this->model->string->super_models->hexadecimal->data->range->valid_type = "array.scheme";
 		$this->model->string->super_models->hexadecimal->data->range->valid_array = ["min"=>"number.natural","max"=>"number.natural"];
 		$this->model->string->super_models->hexadecimal->data->size = new \stdClass();
 		$this->model->string->super_models->hexadecimal->data->size->valid_type = 'number.natural';
@@ -447,7 +484,7 @@ class Requests
 		$this->model->string->super_models->email->data->ext->valid_type = ['array.domain.ext'];
 		$this->model->string->super_models->email->data->ext->valid_array = ['any','com','uk','co.uk','ie'];
 		$this->model->string->super_models->email->data->custom = new \stdClass();
-		$this->model->string->super_models->email->data->custom->valid_type = 'array.key:value';
+		$this->model->string->super_models->email->data->custom->valid_type = 'array.scheme';
 		$this->model->string->super_models->email->data->custom->valid_array = ["name"=>"array.string","domain"=>"array.string"];
 		
 		
@@ -491,8 +528,8 @@ class Requests
 		$this->model->string->super_models->ip->data->mode->valid_type = 'array.string';
 		$this->model->string->super_models->ip->data->mode->valid_array = ['any', 'customer', 'range'];
 		$this->model->string->super_models->ip->data->range = new \stdClass();
-		$this->model->string->super_models->ip->data->range->valid_type = 'array.key:value';
-		$this->model->string->super_models->ip->data->range->valid_array = ['v4'=>'array.key:value','v6'=>'array.key:value'];
+		$this->model->string->super_models->ip->data->range->valid_type = 'array.scheme';
+		$this->model->string->super_models->ip->data->range->valid_array = ['v4'=>'array.scheme','v6'=>'array.scheme'];
 		$this->model->string->super_models->ip->data->range->v4 = ['min'=>'string.ip.v4','max'=>'string.ip.v4'];
 		$this->model->string->super_models->ip->data->range->v6 = ['min'=>'string.ip.v4','max'=>'string.ip.v6'];
 		$this->model->string->super_models->ip->data->custom = new \stdClass();
@@ -639,6 +676,10 @@ class Requests
 							$run_validate = $validity->validate;
 							if($valid_type_string=='array.string'){
 								if($run_validate($options, $this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
+									$valid_opt=true;
+								}
+							}  else if($valid_type_string=='array.scheme'){
+								if($run_validate($this->model->$type->super_models->$subtype->data->$datatype->valid_array,$this->model->$type->super_models->$subtype->data->$datatype->valid_array)){
 									$valid_opt=true;
 								}
 							} else {
