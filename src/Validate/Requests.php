@@ -98,7 +98,7 @@ class Requests
 		$this->valid->string->domain->protocol = new \stdClass();
 		$this->valid->string->domain->protocol->validate = function($string=null){
 			$valid=false;
-			$protocols = ['http','https','ftp','sftp','ssh'];
+			$protocols = ['any','http','https','ftp','sftp','ssh'];
 			if($string){
 				if(in_array($string, $protocols)){
 					$valid=true;
