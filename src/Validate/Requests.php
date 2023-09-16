@@ -476,7 +476,7 @@ class Requests
 		$this->model->string->super_models->email->data = new \stdClass();
 		$this->model->string->super_models->email->data->name = new \stdClass();
 		$this->model->string->super_models->email->data->name->valid_type = 'array.string';
-		$this->model->string->super_models->email->data->name->valid_array = ['any', 'f.l.l', 'f.l.m', 'custom'];
+		$this->model->string->super_models->email->data->name->valid_array = ['any', 'f.l.f', 'f.l.m', 'custom'];
 		$this->model->string->super_models->email->data->domain = new \stdClass();
 		$this->model->string->super_models->email->data->domain->valid_type = 'array.string';
 		$this->model->string->super_models->email->data->domain->valid_array = ['any', 'custom'];
