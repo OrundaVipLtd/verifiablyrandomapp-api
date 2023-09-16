@@ -131,7 +131,7 @@ class VrApi {
 				if(array_key_exists('data', $array)){
 					foreach($array['data'] as $option_key => $value){
 						if(!$Requests->validate_option($key_model, $key_super_model, $option_key, $value)){
-							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$option_key.'=>'.$value.']');
+							$this->error = array('code'=>-5, 'msg'=>'Invalid option ['.$option_key.'=>'.$value.'] in ['.$array["key"].']  @ depth: '.$depth);
 							return -5;
 						} else {
 							return 0;
@@ -154,8 +154,8 @@ class VrApi {
 	
 	private function throwerror(){
 		if(!$this->error){$this->error=array('code'=>-99, 'msg'=>"A non-std error occured.");}
-		print_r($this->error['msg']);
-		print_r($this->error['code']);
+		print_r("Message: ".$this->error['msg']."\r\n");
+		print_r("Code: ".$this->error['code']."\r\n");
 		die();
 	}
 	
