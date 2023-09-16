@@ -19,13 +19,15 @@ class VrApi {
 		$this->request = new \stdClass();
 		$this->request->headers = ['User-Agent'=>'verifiablyrandom.app/1.0.0','Accept'=>'application/json','Authorization'=>'Bearer ' . $this->api_key];
 		$this->request->query = [];
+		$this->request->method = "POST";
+		$this->request->url = "/v1/api";
 		$this->refreshClient();
 	}
 	
 	public function model($query=array()){
 		$this->request->query = $query;
 		if($this->checkRequest($this->request->query['request'])){
-			$this->response = $this->client->request('POST', '/v1/api', ['json' => $this->request->query]);
+			$this->response = $this->client->request($this->request->method, $this->request->url, ['json' => $this->request->query]);
 			
 		} else {
 			$this->throwerror();
@@ -63,6 +65,23 @@ class VrApi {
 		$this->request->headers['Authorization'] = 'Bearer ' . $this->api_key;
 		$this->refreshClient();
 	}
+	
+	public function requestMethod($Method=false){
+		if($Method){
+			$this->request->method = $Method;
+		} else {
+			return $this->request->method;
+		}
+	}
+	
+	public function requestUrl($Url=false){
+		if($Url){
+			$this->request->url = $Url;
+		} else {
+			return $this->request->url;
+		}
+	}
+	
 	
 	public function checkRequest($Request){
 		$valid = true;
