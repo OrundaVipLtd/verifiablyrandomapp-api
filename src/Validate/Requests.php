@@ -252,7 +252,7 @@ class Requests
 		$this->valid->array->string->decimal = $this->valid->string->decimal;
 		$this->valid->array->string->byte = $this->valid->string->byte;
 		$this->valid->array->string->email = $this->valid->string->email;
-		$this->valid->array->string->domain = $this->valid->string->ip;
+		$this->valid->array->string->domain = $this->valid->string->domain;
 		$this->valid->array->string->ip = $this->valid->string->ip;
 		
 		$this->valid->array->number = new \stdClass();
