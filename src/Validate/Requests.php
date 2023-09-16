@@ -499,13 +499,13 @@ class Requests
 		$this->model->string->super_models->domain->is_super_model = false;
 		$this->model->string->super_models->domain->data = new \stdClass();
 		$this->model->string->super_models->domain->data->protocol = new \stdClass();
-		$this->model->string->super_models->domain->data->protocol->valid_type = 'array.domain.protocol';
+		$this->model->string->super_models->domain->data->protocol->valid_type = 'array.string.domain.protocol';
 		$this->model->string->super_models->domain->data->protocol->valid_array = ['any', 'none', 'http', 'https', 'ftp'];
 		$this->model->string->super_models->domain->data->name = new \stdClass();
 		$this->model->string->super_models->domain->data->name->valid_type = 'array.string';
 		$this->model->string->super_models->domain->data->name->valid_array = ['any','custom'];
 		$this->model->string->super_models->domain->data->ext = new \stdClass();
-		$this->model->string->super_models->domain->data->ext->valid_type = 'array.domain.ext';
+		$this->model->string->super_models->domain->data->ext->valid_type = 'array.string.domain.ext';
 		$this->model->string->super_models->domain->data->ext->valid_array = ['any','com','uk','co.uk','ie'];
 		$this->model->string->super_models->domain->data->custom = new \stdClass();
 		$this->model->string->super_models->domain->data->custom->valid_type = 'array.custom.domain';
