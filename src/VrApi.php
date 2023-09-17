@@ -259,6 +259,8 @@ class VrApi {
 		
 		$responses = [];
 		foreach($model as $request){
+			print_r($request);
+			echo "<br/>";
 			$request['size'] = 10;
 			$modeled_request = array("request"=>array($request), "save"=>true);
 			$error = $this->runRequestValidation($modeled_request["request"][0]);
@@ -267,12 +269,10 @@ class VrApi {
 				break;
 			}
 			$this->model($modeled_request);
-			$responses[] = $this->response()->getBody()->getContents();
+			print_r($this->response()->getBody()->getContents());
+			echo "<br/>";
 		}
 		
-		
-		
-		return $responses;
 		
 		
 	}
