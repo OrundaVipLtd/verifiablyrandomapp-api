@@ -671,7 +671,6 @@ class Requests
 					}
 					
 					if($valid_type_exists){
-						print_r("valid type [".$valid_type_string."] valid.\r\n");
 						if(property_exists($validity, "validate")){
 							$run_validate = $validity->validate;
 							if($valid_type_string=='array.string'){
