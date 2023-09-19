@@ -111,8 +111,8 @@ class VrApi {
 		if(array_key_exists('key', $array)){
 		if(array_key_exists('models', $array)){
 			$valid = true;
-			if(gettype($array['model'])=='array'){
-				foreach($array['model'] as $model_item){
+			if(gettype($array['models'])=='array'){
+				foreach($array['models'] as $model_item){
 					$valid_request_error = runRequestValidation($model_item, $depth+=1);
 					if($valid_request_error<0){
 						$valid=false;
