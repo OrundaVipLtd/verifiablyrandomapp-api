@@ -113,7 +113,7 @@ class VrApi {
 			$valid = true;
 			if(gettype($array['models'])=='array'){
 				foreach($array['models'] as $model_item){
-					$valid_request_error = runRequestValidation($model_item, $depth+=1);
+					$valid_request_error = $this->runRequestValidation($model_item, $depth+=1);
 					if($valid_request_error<0){
 						$valid=false;
 						break;
